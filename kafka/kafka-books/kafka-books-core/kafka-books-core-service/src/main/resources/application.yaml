@@ -1,0 +1,10 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    url: ${KAFKA_BOOKS_POSTGRESQL_URL}
+    username: ${KAFKA_BOOKS_POSTGRESQL_USERNAME}
+    password: ${KAFKA_BOOKS_POSTGRESQL_PASSWORD}
+  liquibase:
+    change-log: classpath:db/liquibase/changelog-master.xml

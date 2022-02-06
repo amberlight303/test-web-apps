@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd">
+
+    <changeSet id="1644132964963-1" author="Oleg Vostokov, amberlight303@gmail.com">
+
+        <comment>
+            Creation of core tables, inserting of book types and genres
+        </comment>
+
+
+        <createTable tableName="author">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_author"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="type">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_type"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <createTable tableName="genre">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_genre"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="genre" constraintName="FK_GENRE_ON_TYPE" referencedColumnNames="id" referencedTableName="type"/>
+
+
+        <createTable tableName="book">
+            <column autoIncrement="true" name="id" type="BIGSERIAL">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_book"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genre_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="published" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="genre_id" baseTableName="book" constraintName="FK_BOOK_ON_GENRE"
+                                 referencedColumnNames="id" referencedTableName="genre"/>
+        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="book" constraintName="FK_BOOK_ON_TYPE"
+                                 referencedColumnNames="id" referencedTableName="type"/>
+
+
+        <createTable tableName="author_book">
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_author_book"/>
+            </column>
+            <column name="books_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_author_book"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="author_book"
+                                 constraintName="fk_book_on_author" referencedColumnNames="id"
+                                 referencedTableName="author"/>
+        <addForeignKeyConstraint baseColumnNames="books_id" baseTableName="author_book"
+                                 constraintName="fk_author_on_book" referencedColumnNames="id"
+                                 referencedTableName="book"/>
+
+
+        <sql splitStatements="true" stripComments="true">
+            insert into type (name)
+            values ('Fiction'),
+                   ('Nonfiction');
+        </sql>
+
+
+        <sql splitStatements="true" stripComments="true">
+            insert into genre (type_id, name)
+            values (1, 'Action and adventure'),
+                   (1, 'Anthology'),
+                   (1, 'Classic'),
+                   (1, 'Comic and graphic novel'),
+                   (1, 'Crime and detective'),
+                   (1, 'Drama'),
+                   (1, 'Fable'),
+                   (1, 'Fairy tale'),
+                   (1, 'Fan-fiction'),
+                   (1, 'Fantasy'),
+                   (1, 'Historical fiction'),
+                   (1, 'Horror'),
+                   (1, 'Humor'),
+                   (1, 'Legend'),
+                   (1, 'Magical realism'),
+                   (1, 'Mystery'),
+                   (1, 'Mythology'),
+                   (1, 'Fictional poetry'),
+                   (1, 'Realistic fiction'),
+                   (1, 'Romance'),
+                   (1, 'Satire'),
+                   (1, 'Science fiction'),
+                   (1, 'Short story'),
+                   (1, 'Thriller');
+
+            insert into genre (type_id, name)
+            values (2, 'Biography'),
+                   (2, 'Essay'),
+                   (2, 'Memoir'),
+                   (2, 'Narrative nonfiction'),
+                   (2, 'Periodicals'),
+                   (2, 'Reference book'),
+                   (2, 'Self-help book'),
+                   (2, 'Speech'),
+                   (2, 'Textbook'),
+                   (2, 'Nonfictional poetry');
+        </sql>
+
+
+    </changeSet>
+
+</databaseChangeLog>
