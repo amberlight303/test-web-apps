@@ -6,6 +6,8 @@ import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -19,6 +21,9 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Table(name = "book")
+@NamedEntityGraph(name = "BookWithAuthors",
+        attributeNodes = @NamedAttributeNode("authors")
+)
 public class Book {
 
     @Id
@@ -35,17 +40,21 @@ public class Book {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "type_id", nullable = false)
+//    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id")
+    @ToString.Exclude
     private Type type;
 
-    @NonNull
-    @ManyToOne
-    @JoinColumn(name = "genre_id", nullable = false)
+//    @NonNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "genre_id")
+    @ToString.Exclude
     private Genre genre;
 
-    @ManyToMany(mappedBy = "books")
+//    @NonNull
+    
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
     @ToString.Exclude
     private Set<Author> authors = new LinkedHashSet<>();
 

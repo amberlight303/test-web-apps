@@ -29,11 +29,11 @@ public class Genre {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "genre", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "genre", orphanRemoval = true)
     @ToString.Exclude
     private List<Book> books = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id")
     private Type type;
 

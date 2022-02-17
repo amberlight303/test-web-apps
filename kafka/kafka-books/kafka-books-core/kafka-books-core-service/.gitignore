@@ -34,3 +34,4 @@ build/
 
 ### Custom & Local ###
 **/dev.env
+**/dev-override.yaml

@@ -26,11 +26,11 @@ public class Type {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "type", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "type", orphanRemoval = true)
     @ToString.Exclude
-    private List<Book> book = new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
 
-    @OneToMany(mappedBy = "type", orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "type", orphanRemoval = true)
     @ToString.Exclude
     private Set<Genre> genres = new LinkedHashSet<>();
 

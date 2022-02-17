@@ -18,6 +18,12 @@ import java.util.Set;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Builder
+@NamedEntityGraph(name = "Author", attributeNodes = {})
+
+@NamedEntityGraph(name = "AuthorWithBooks",
+        attributeNodes = @NamedAttributeNode("books")
+)
+
 @Table(name = "author")
 public class Author {
 
@@ -34,7 +40,10 @@ public class Author {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
+            })
     @JoinTable(name = "author_book",
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "books_id"))

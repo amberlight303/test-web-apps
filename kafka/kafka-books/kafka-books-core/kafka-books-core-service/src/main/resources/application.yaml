@@ -3,8 +3,11 @@ server:
 
 spring:
   datasource:
-    url: ${KAFKA_BOOKS_POSTGRESQL_URL}
-    username: ${KAFKA_BOOKS_POSTGRESQL_USERNAME}
-    password: ${KAFKA_BOOKS_POSTGRESQL_PASSWORD}
+#    url: ${KAFKA_BOOKS_CORE_SERVICE_POSTGRESQL_URL}
+#    username: ${KAFKA_BOOKS_CORE_SERVICE_POSTGRESQL_USERNAME}
+#    password: ${KAFKA_BOOKS_CORE_SERVICE_POSTGRESQL_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: pwd
   liquibase:
     change-log: classpath:db/liquibase/changelog-master.xml
