@@ -57,9 +57,6 @@
             <column name="description" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="type_id" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
             <column name="genre_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
@@ -69,8 +66,6 @@
         </createTable>
         <addForeignKeyConstraint baseColumnNames="genre_id" baseTableName="book" constraintName="FK_BOOK_ON_GENRE"
                                  referencedColumnNames="id" referencedTableName="genre"/>
-        <addForeignKeyConstraint baseColumnNames="type_id" baseTableName="book" constraintName="FK_BOOK_ON_TYPE"
-                                 referencedColumnNames="id" referencedTableName="type"/>
 
 
         <createTable tableName="author_book">

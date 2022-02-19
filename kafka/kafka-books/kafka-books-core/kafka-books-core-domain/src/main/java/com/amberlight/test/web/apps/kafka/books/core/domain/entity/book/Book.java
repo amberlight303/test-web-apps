@@ -21,8 +21,19 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Table(name = "book")
-@NamedEntityGraph(name = "BookWithAuthors",
-        attributeNodes = @NamedAttributeNode("authors")
+@NamedEntityGraph(name = "BookBasicWithAuthors",
+        attributeNodes = {
+                @NamedAttributeNode("authors"),
+                @NamedAttributeNode(value = "genre", subgraph = "genre-type")
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name = "genre-type",
+                        attributeNodes = {
+                                @NamedAttributeNode("type")
+                        }
+                )
+        }
 )
 public class Book {
 
@@ -30,7 +41,6 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
 
     @NonNull
     @Column(name = "name", nullable = false)
@@ -40,27 +50,18 @@ public class Book {
     @Column(name = "description", nullable = false)
     private String description;
 
-//    @NonNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id")
-    @ToString.Exclude
-    private Type type;
+    @NonNull
+    @Column(name = "published", columnDefinition = "TIMESTAMP", nullable = false)
+    private LocalDateTime published;
 
-//    @NonNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
     @ToString.Exclude
     private Genre genre;
 
-//    @NonNull
-    
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
     @ToString.Exclude
     private Set<Author> authors = new LinkedHashSet<>();
-
-    @NonNull
-    @Column(name = "published", columnDefinition = "TIMESTAMP", nullable = false)
-    private LocalDateTime published;
 
     @Override
     public boolean equals(Object o) {

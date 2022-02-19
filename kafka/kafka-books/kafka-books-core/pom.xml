@@ -13,14 +13,19 @@
     <artifactId>kafka-books-core</artifactId>
 
     <properties>
+        <java.version>11</java.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring.boot.version>2.6.3</spring.boot.version>
     </properties>
 
     <modules>
         <module>kafka-books-core-parent</module>
-        <module>kafka-books-core-service</module>
+        <module>kafka-books-core-api</module>
         <module>kafka-books-core-domain</module>
+        <module>kafka-books-core-service</module>
     </modules>
 
 </project>

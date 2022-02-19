@@ -28,10 +28,6 @@ public class Type {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "type", orphanRemoval = true)
     @ToString.Exclude
-    private List<Book> books = new ArrayList<>();
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "type", orphanRemoval = true)
-    @ToString.Exclude
     private Set<Genre> genres = new LinkedHashSet<>();
 
     @Override

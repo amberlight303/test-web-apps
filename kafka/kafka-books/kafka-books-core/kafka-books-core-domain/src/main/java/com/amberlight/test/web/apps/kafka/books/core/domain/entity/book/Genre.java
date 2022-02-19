@@ -35,6 +35,7 @@ public class Genre {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "type_id")
+    @ToString.Exclude
     private Type type;
 
     @Override
