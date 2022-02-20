@@ -1,6 +1,8 @@
 package com.amberlight.test.web.apps.kafka.books.core.domain.entity.author;
 
 import com.amberlight.test.web.apps.kafka.books.core.domain.entity.book.Book;
+import com.amberlight.test.web.apps.kafka.books.core.domain.entity.book.Genre;
+import com.amberlight.test.web.apps.kafka.books.core.domain.entity.book.Type;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -18,12 +20,6 @@ import java.util.Set;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @Builder
-@NamedEntityGraph(name = "Author", attributeNodes = {})
-
-@NamedEntityGraph(name = "AuthorWithBooks",
-        attributeNodes = @NamedAttributeNode("books")
-)
-
 @Table(name = "author")
 public class Author {
 
