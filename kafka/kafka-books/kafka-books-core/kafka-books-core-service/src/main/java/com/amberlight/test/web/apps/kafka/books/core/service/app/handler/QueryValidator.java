@@ -5,8 +5,8 @@ import com.amberlight.test.web.apps.kafka.books.core.api.dto.api.query.FindBookQ
 
 public interface QueryValidator {
 
-    void validateQuery(FindBookQuery command);
+    void validateQuery(FindBookQuery query);
 
-    void validateQuery(FindBookAuthorQuery command);
+    void validateQuery(FindBookAuthorQuery query);
 
 }

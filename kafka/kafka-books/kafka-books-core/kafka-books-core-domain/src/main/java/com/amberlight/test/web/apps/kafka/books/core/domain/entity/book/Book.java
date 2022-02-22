@@ -52,6 +52,8 @@ public class Book {
     @Column(name = "published", columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDateTime published;
 
+    // todo play with monetary field one day, it would be useful
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
     @ToString.Exclude

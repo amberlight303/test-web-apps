@@ -18,14 +18,15 @@ public class QueryHandlerImpl implements QueryHandler {
     @Autowired
     private BookAuthorQueryService bookAuthorQueryService;
 
+    @Autowired
+    private QueryValidator queryValidator;
+
     /**
      * {@inheritDoc}
      */
     @Override
     public FindBookDocument process(FindBookQuery query) {
-
-        // todo validation of the query should happen here via StructValidator
-
+        queryValidator.validateQuery(query);
         return bookQueryService.process(query);
     }
 
@@ -34,9 +35,7 @@ public class QueryHandlerImpl implements QueryHandler {
      */
     @Override
     public FindBookAuthorDocument process(FindBookAuthorQuery query) {
-
-        // todo validation of the query should happen here via StructValidator
-
+        queryValidator.validateQuery(query);
         return bookAuthorQueryService.process(query);
     }
 }

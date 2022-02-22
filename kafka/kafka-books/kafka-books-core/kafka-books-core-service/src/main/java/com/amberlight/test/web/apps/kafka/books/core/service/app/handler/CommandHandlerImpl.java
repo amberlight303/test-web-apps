@@ -18,14 +18,15 @@ public class CommandHandlerImpl implements CommandHandler {
     @Autowired
     private BookAuthorCommandService bookAuthorCommandService;
 
+    @Autowired
+    private CommandValidator commandValidator;
+
     /**
      * {@inheritDoc}
      */
     @Override
     public CreateBookDocument process(CreateBookCommand command) {
-
-        // todo validation happens here through CommandValidator
-
+        commandValidator.validateCommand(command);
         return bookCommandService.process(command);
     }
 
@@ -34,9 +35,7 @@ public class CommandHandlerImpl implements CommandHandler {
      */
     @Override
     public CreateBookAuthorDocument process(CreateBookAuthorCommand command) {
-
-        // todo validation happens here through CommandValidator
-
+        commandValidator.validateCommand(command);
         return bookAuthorCommandService.process(command);
     }
 }

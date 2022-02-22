@@ -3,12 +3,15 @@ package com.amberlight.test.web.apps.kafka.books.core.service.app.handler;
 import com.amberlight.test.web.apps.domain.validation.ArgumentValidations;
 import com.amberlight.test.web.apps.kafka.books.core.api.dto.api.command.CreateBookAuthorCommand;
 import com.amberlight.test.web.apps.kafka.books.core.api.dto.api.command.CreateBookCommand;
+import com.amberlight.test.web.apps.kafka.books.core.api.dto.model.author.AuthorDto;
 import com.amberlight.test.web.apps.kafka.books.core.api.dto.model.book.BookDto;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+
+import static com.amberlight.test.web.apps.kafka.books.core.service.util.StreamUtil.withCounter;
 
 @Component("commandValidator")
 public class CommandValidatorImpl implements CommandValidator {
@@ -42,13 +45,16 @@ public class CommandValidatorImpl implements CommandValidator {
 
     @Override
     public void validateCommand(CreateBookAuthorCommand command) {
+        ArgumentValidations.notNull("createBookAuthorCommand", command);
+        ArgumentValidations.notNull("createBookAuthorCommand.author", command.getAuthor());
 
+        AuthorDto author = command.getAuthor();
+        ArgumentValidations.validatorFor("createBookAuthorCommand.author.firstName",
+                author.getFirstName()).notEmpty().length(1, 255).validate();
+        ArgumentValidations.validatorFor("createBookAuthorCommand.author.lastName",
+                author.getLastName()).notEmpty().length(1, 255).validate();
     }
 
-    // todo move it to some util place
-    public static <T> Consumer<T> withCounter(BiConsumer<Integer, T> consumer) {
-        AtomicInteger counter = new AtomicInteger(0);
-        return item -> consumer.accept(counter.getAndIncrement(), item);
-    }
+
 
 }
