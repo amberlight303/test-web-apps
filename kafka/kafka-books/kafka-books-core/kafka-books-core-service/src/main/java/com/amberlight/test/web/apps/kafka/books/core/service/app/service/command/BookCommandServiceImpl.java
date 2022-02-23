@@ -1,8 +1,8 @@
 package com.amberlight.test.web.apps.kafka.books.core.service.app.service.command;
 
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.api.command.CreateBookCommand;
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.api.document.CreateBookDocument;
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.model.book.BookDto;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.api.command.CreateBookCommand;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.api.document.CreateBookDocument;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.dto.book.BookDto;
 import com.amberlight.test.web.apps.kafka.books.core.domain.entity.book.Book;
 import com.amberlight.test.web.apps.kafka.books.core.service.app.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;

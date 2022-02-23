@@ -1,15 +1,11 @@
 package com.amberlight.test.web.apps.kafka.books.core.service.app.handler;
 
 import com.amberlight.test.web.apps.domain.validation.ArgumentValidations;
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.api.command.CreateBookAuthorCommand;
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.api.command.CreateBookCommand;
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.model.author.AuthorDto;
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.model.book.BookDto;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.api.command.CreateBookAuthorCommand;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.api.command.CreateBookCommand;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.dto.author.AuthorDto;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.dto.book.BookDto;
 import org.springframework.stereotype.Component;
-
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 
 import static com.amberlight.test.web.apps.kafka.books.core.service.util.StreamUtil.withCounter;
 

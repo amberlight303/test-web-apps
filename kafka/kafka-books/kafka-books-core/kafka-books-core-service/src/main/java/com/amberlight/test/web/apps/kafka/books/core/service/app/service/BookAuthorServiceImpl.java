@@ -1,6 +1,6 @@
 package com.amberlight.test.web.apps.kafka.books.core.service.app.service;
 
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.model.author.AuthorDto;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.dto.author.AuthorDto;
 import com.amberlight.test.web.apps.kafka.books.core.domain.entity.author.Author;
 import com.amberlight.test.web.apps.kafka.books.core.domain.repository.BookAuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;

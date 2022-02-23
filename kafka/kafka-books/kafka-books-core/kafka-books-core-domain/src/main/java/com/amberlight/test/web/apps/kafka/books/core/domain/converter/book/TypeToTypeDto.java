@@ -1,6 +1,6 @@
 package com.amberlight.test.web.apps.kafka.books.core.domain.converter.book;
 
-import com.amberlight.test.web.apps.kafka.books.core.api.dto.model.book.TypeDto;
+import com.amberlight.test.web.apps.kafka.books.core.api.struct.dto.book.TypeDto;
 import com.amberlight.test.web.apps.kafka.books.core.domain.entity.book.Type;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
