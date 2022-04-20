@@ -26,6 +26,7 @@ public class ArgumentPredicates {
             return "null";
         }
     };
+
     public static final ArgumentPredicate<Object> EMPTY = new ArgumentPredicate<Object>() {
 
         @Override

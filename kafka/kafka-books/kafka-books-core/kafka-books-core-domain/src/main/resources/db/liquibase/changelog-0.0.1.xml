@@ -60,6 +60,9 @@
             <column name="genre_id" type="BIGINT">
                 <constraints nullable="false"/>
             </column>
+            <column name="price" type="NUMERIC(19,8)">
+                <constraints nullable="false"/>
+            </column>
             <column name="published" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
@@ -130,7 +133,6 @@
                    (2, 'Textbook'),
                    (2, 'Nonfictional poetry');
         </sql>
-
 
     </changeSet>
 

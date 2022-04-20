@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -21,6 +22,7 @@ public class BookDto implements Serializable {
     private String name;
     private String description;
     private GenreDto genre;
+    private BigDecimal price;
     private Set<AuthorDto> authors;
     private LocalDateTime published;
 }

@@ -5,6 +5,36 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.7.xsd">
 
+    <!-- Data types for PostgreSQL -->
+    <property name="timestamp.type" dbms="postgresql" value="timestamp without time zone"/>
+    <property name="datetime.type" dbms="postgresql" value="timestamp without time zone"/>
+    <property name="date.type" dbms="postgresql" value="date"/>
+    <property name="decimal.type" dbms="postgresql" value="numeric(19,8)"/>
+    <property name="double.type" dbms="postgresql" value="double precision"/>
+    <property name="boolean.type" dbms="postgresql" value="boolean"/>
+    <property name="blob.type" dbms="postgresql" value="bytea"/>
+    <property name="now" dbms="postgresql" value="CURRENT_TIMESTAMP"/>
+
+    <!-- Data types for MySQL -->
+    <property name="timestamp.type" dbms="mysql" value="datetime(3)"/>
+    <property name="datetime.type" dbms="mysql" value="datetime"/>
+    <property name="date.type" dbms="mysql" value="date"/>
+    <property name="decimal.type" dbms="mysql" value="DECIMAL(19,8)"/>
+    <property name="double.type" dbms="mysql" value="double"/>
+    <property name="boolean.type" dbms="mysql" value="boolean"/>
+    <property name="blob.type" dbms="mysql" value="longblob"/>
+    <property name="now" dbms="mysql" value="CURRENT_TIMESTAMP()"/>
+
+    <!-- Data types for HSQLDB -->
+    <property name="timestamp.type" dbms="hsqldb" value="timestamp"/>
+    <property name="datetime.type" dbms="hsqldb" value="datetime"/>
+    <property name="date.type" dbms="hsqldb" value="date"/>
+    <property name="decimal.type" dbms="hsqldb" value="DECIMAL(19,8)"/>
+    <property name="double.type" dbms="hsqldb" value="double"/>
+    <property name="boolean.type" dbms="hsqldb" value="BIT"/>
+    <property name="blob.type" dbms="hsqldb" value="BLOB"/>
+    <property name="now" dbms="hsqldb" value="CURRENT_TIMESTAMP"/>
+
     <include file="db/liquibase/changelog-0.0.1.xml"/>
 
 </databaseChangeLog>

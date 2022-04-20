@@ -16,7 +16,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MonetaryAmountsTests {
 
-
 	@Test
 	public void testGetAmount_fromString() {
 

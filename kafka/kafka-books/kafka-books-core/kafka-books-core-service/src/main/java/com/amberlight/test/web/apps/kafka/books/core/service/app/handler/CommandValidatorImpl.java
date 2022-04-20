@@ -24,8 +24,10 @@ public class CommandValidatorImpl implements CommandValidator {
                 book.getDescription()).notEmpty().length(1, 255).validate();
         ArgumentValidations.notNull("createBookCommand.book.published", book.getPublished());
 
-        ArgumentValidations.notNull("createBookCommand.genre", book.getGenre());
-        ArgumentValidations.notNull("createBookCommand.genre.id", book.getGenre().getId());
+        ArgumentValidations.notNull("createBookCommand.book.genre", book.getGenre());
+        ArgumentValidations.notNull("createBookCommand.book.genre.id", book.getGenre().getId());
+
+        ArgumentValidations.positiveAmount("createBookCommand.book.price", book.getPrice());
 
         ArgumentValidations.notEmptyCollection("createBookCommand.book.authors", book.getAuthors());
 
@@ -33,8 +35,8 @@ public class CommandValidatorImpl implements CommandValidator {
         // todo think about fields that should not be sent (memory consumption breach, etc)
 
         book.getAuthors().forEach(withCounter((i, author) -> {
-            ArgumentValidations.notNull(String.format("createBookCommand.authors[%d]", i), author);
-            ArgumentValidations.notNull(String.format("createBookCommand.authors[%d].id", i), author.getId());
+            ArgumentValidations.notNull(String.format("createBookCommand.book.authors[%d]", i), author);
+            ArgumentValidations.notNull(String.format("createBookCommand.book.authors[%d].id", i), author.getId());
         }));
 
     }

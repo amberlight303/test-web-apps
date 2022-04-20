@@ -18,6 +18,7 @@
 
     <modules>
         <module>kafka</module>
+        <module>domain</module>
     </modules>
 
 </project>

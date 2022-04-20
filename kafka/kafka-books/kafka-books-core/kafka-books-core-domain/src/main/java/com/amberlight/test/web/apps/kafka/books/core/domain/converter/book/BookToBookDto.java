@@ -26,7 +26,7 @@ public class BookToBookDto implements Converter<Book, BookDto> {
     public BookDto convert(Book source) {
         BookDto.BookDtoBuilder builder = BookDto.builder();
         builder.id(source.getId()).name(source.getName()).description(source.getDescription())
-                .published(source.getPublished());
+                .published(source.getPublished()).price(source.getPrice());
         if (Hibernate.isInitialized(source.getGenre()) && source.getGenre() != null) {
             builder.genre(genreToGenreDto.convert(source.getGenre()));
         }

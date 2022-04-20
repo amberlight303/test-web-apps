@@ -1,10 +1,14 @@
 package com.amberlight.test.web.apps.kafka.books.core.domain.entity.book;
 
+import com.amberlight.test.web.apps.domain.monetary.MonetaryAmount;
 import com.amberlight.test.web.apps.kafka.books.core.domain.entity.author.Author;
 import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -49,15 +53,20 @@ public class Book {
     private String description;
 
     @NonNull
-    @Column(name = "published", columnDefinition = "TIMESTAMP", nullable = false)
+    @Column(name = "published", nullable = false)
     private LocalDateTime published;
-
-    // todo play with monetary field one day, it would be useful
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "genre_id")
     @ToString.Exclude
     private Genre genre;
+
+    @NonNull
+    @DecimalMin(value = "0", message = "The value can not be negative")
+    @DecimalMax(value = MonetaryAmount.MAX_MONETARY_VALUE, message = "The value can not be greater than "
+            + MonetaryAmount.MAX_MONETARY_VALUE)
+    @Column(name = "price", nullable = false)
+    private BigDecimal price;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "books")
     @ToString.Exclude

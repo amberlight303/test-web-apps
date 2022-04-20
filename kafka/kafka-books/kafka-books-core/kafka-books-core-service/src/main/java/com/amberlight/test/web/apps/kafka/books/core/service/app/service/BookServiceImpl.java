@@ -40,6 +40,7 @@ public class BookServiceImpl implements BookService {
         Genre genreForNewBook = new Genre();
         genreForNewBook.setId(bookDto.getGenre().getId());
         newBook.setGenre(genreForNewBook);
+        newBook.setPrice(bookDto.getPrice());
         Book savedBook = bookRepository.saveAndFlush(newBook);
         Set<Long> existingAuthorsIds = bookDto.getAuthors().stream()
                 .map(AuthorDto::getId).collect(Collectors.toSet());
