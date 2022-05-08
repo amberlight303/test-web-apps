@@ -14,9 +14,11 @@ import java.util.stream.Collectors;
 @Component
 public class AuthorToAuthorDto implements Converter<Author, AuthorDto> {
 
-    @Autowired
-    @Lazy
     private BookToBookDto bookToBookDto;
+
+    public AuthorToAuthorDto(@Lazy BookToBookDto bookToBookDto) {
+        this.bookToBookDto = bookToBookDto;
+    }
 
     @Override
     public AuthorDto convert(Author source) {

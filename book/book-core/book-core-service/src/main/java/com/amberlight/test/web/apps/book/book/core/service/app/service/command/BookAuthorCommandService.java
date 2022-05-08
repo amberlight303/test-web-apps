@@ -7,6 +7,6 @@ import javax.validation.constraints.NotNull;
 
 public interface BookAuthorCommandService {
 
-    CreateBookAuthorDocument process(@NotNull CreateBookAuthorCommand command);
+    CreateBookAuthorDocument process(CreateBookAuthorCommand command);
 
 }

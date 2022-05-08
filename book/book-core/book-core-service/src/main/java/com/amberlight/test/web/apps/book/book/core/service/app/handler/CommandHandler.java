@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 
 public interface CommandHandler {
 
-    CreateBookDocument process(@NotNull CreateBookCommand command);
+    CreateBookDocument process(CreateBookCommand command);
 
-    CreateBookAuthorDocument process(@NotNull CreateBookAuthorCommand command);
+    CreateBookAuthorDocument process(CreateBookAuthorCommand command);
 
 }

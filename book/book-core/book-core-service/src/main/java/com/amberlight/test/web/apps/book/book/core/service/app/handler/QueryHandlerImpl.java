@@ -12,14 +12,19 @@ import org.springframework.stereotype.Component;
 @Component("queryHandler")
 public class QueryHandlerImpl implements QueryHandler {
 
-    @Autowired
     private BookQueryService bookQueryService;
 
-    @Autowired
     private BookAuthorQueryService bookAuthorQueryService;
 
-    @Autowired
     private QueryValidator queryValidator;
+
+    public QueryHandlerImpl(BookQueryService bookQueryService,
+                            BookAuthorQueryService bookAuthorQueryService,
+                            QueryValidator queryValidator) {
+        this.bookQueryService = bookQueryService;
+        this.bookAuthorQueryService = bookAuthorQueryService;
+        this.queryValidator = queryValidator;
+    }
 
     /**
      * {@inheritDoc}

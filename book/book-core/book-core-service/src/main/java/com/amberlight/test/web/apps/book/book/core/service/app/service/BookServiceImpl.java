@@ -20,11 +20,14 @@ public class BookServiceImpl implements BookService {
 
     // todo clean redundant imports
 
-    @Autowired
     private BookRepository bookRepository;
 
-    @Autowired
     private BookAuthorRepository bookAuthorRepository;
+
+    public BookServiceImpl(BookRepository bookRepository, BookAuthorRepository bookAuthorRepository) {
+        this.bookRepository = bookRepository;
+        this.bookAuthorRepository = bookAuthorRepository;
+    }
 
     /**
      * {@inheritDoc}

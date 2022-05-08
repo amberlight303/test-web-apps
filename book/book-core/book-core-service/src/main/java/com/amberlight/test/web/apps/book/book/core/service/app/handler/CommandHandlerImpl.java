@@ -12,14 +12,19 @@ import org.springframework.stereotype.Component;
 @Component("commandHandler")
 public class CommandHandlerImpl implements CommandHandler {
 
-    @Autowired
     private BookCommandService bookCommandService;
 
-    @Autowired
     private BookAuthorCommandService bookAuthorCommandService;
 
-    @Autowired
     private CommandValidator commandValidator;
+
+    public CommandHandlerImpl(BookCommandService bookCommandService,
+                              BookAuthorCommandService bookAuthorCommandService,
+                              CommandValidator commandValidator) {
+        this.bookCommandService = bookCommandService;
+        this.bookAuthorCommandService = bookAuthorCommandService;
+        this.commandValidator = commandValidator;
+    }
 
     /**
      * {@inheritDoc}

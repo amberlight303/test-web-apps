@@ -14,11 +14,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/book")
 public class BookResource {
 
-    @Autowired
     private CommandHandler commandHandler;
 
-    @Autowired
     private QueryHandler queryHandler;
+
+    public BookResource(CommandHandler commandHandler, QueryHandler queryHandler) {
+        this.commandHandler = commandHandler;
+        this.queryHandler = queryHandler;
+    }
 
     @PostMapping("/create")
     public ResponseEntity<CreateBookDocument> createBook(@RequestBody CreateBookCommand command) {

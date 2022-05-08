@@ -10,8 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("bookAuthorService")
 public class BookAuthorServiceImpl implements BookAuthorService {
 
-    @Autowired
     private BookAuthorRepository bookAuthorRepository;
+
+    public BookAuthorServiceImpl(BookAuthorRepository bookAuthorRepository) {
+        this.bookAuthorRepository = bookAuthorRepository;
+    }
 
     /**
      * {@inheritDoc}

@@ -13,13 +13,14 @@ import java.util.stream.Collectors;
 @Component
 public class GenreToGenreDto implements Converter<Genre, GenreDto> {
 
-    @Autowired
-    @Lazy
     private TypeToTypeDto typeToTypeDto;
 
-    @Autowired
-    @Lazy
     private BookToBookDto bookToBookDto;
+
+    public GenreToGenreDto(@Lazy TypeToTypeDto typeToTypeDto, @Lazy BookToBookDto bookToBookDto) {
+        this.typeToTypeDto = typeToTypeDto;
+        this.bookToBookDto = bookToBookDto;
+    }
 
     @Override
     public GenreDto convert(Genre source) {

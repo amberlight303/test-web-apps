@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 
 public interface QueryHandler {
 
-    FindBookDocument process(@NotNull FindBookQuery query);
+    FindBookDocument process(FindBookQuery query);
 
-    FindBookAuthorDocument process(@NotNull FindBookAuthorQuery query);
+    FindBookAuthorDocument process(FindBookAuthorQuery query);
 
 }

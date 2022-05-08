@@ -13,11 +13,14 @@ import org.springframework.stereotype.Service;
 @Service("bookAuthorQueryService")
 public class BookAuthorQueryServiceImpl implements BookAuthorQueryService {
 
-    @Autowired
     private BookAuthorService bookAuthorService;
 
-    @Autowired
     private ConversionService conversionService;
+
+    public BookAuthorQueryServiceImpl(BookAuthorService bookAuthorService, ConversionService conversionService) {
+        this.bookAuthorService = bookAuthorService;
+        this.conversionService = conversionService;
+    }
 
     /**
      * {@inheritDoc}

@@ -12,11 +12,14 @@ import org.springframework.stereotype.Service;
 @Service("bookAuthorCommandService")
 public class BookAuthorCommandServiceImpl implements BookAuthorCommandService {
 
-    @Autowired
     private BookAuthorService bookAuthorService;
 
-    @Autowired
     private ConversionService conversionService;
+
+    public BookAuthorCommandServiceImpl(BookAuthorService bookAuthorService, ConversionService conversionService) {
+        this.bookAuthorService = bookAuthorService;
+        this.conversionService = conversionService;
+    }
 
     /**
      * {@inheritDoc}

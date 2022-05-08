@@ -7,6 +7,6 @@ import javax.validation.constraints.NotNull;
 
 public interface BookAuthorQueryService {
 
-    FindBookAuthorDocument process(@NotNull FindBookAuthorQuery query);
+    FindBookAuthorDocument process(FindBookAuthorQuery query);
 
 }
