@@ -1,1 +1,1 @@
-# A project for testing and showcasing contemporary Java web app microservices architecture and technologies.
+# A project for testing and showcasing contemporary Java web microservices architecture and technologies.
